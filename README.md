@@ -1,4 +1,4 @@
-#ezproxy-notifier
+# ezproxy-notifier
 
 ## Setup
 1. Put the `emailNotice.php` file on a web server that can be reached from your ezproxy host.
