@@ -11,7 +11,7 @@ if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
 }
 
 function ignoreMail(){
-                $message = "Someone went directly to this form: ". $_POST['url'];
+                $message = "Someone went directly to this form: ". htmlspecialchars($_POST['url']);
                 mail($adminEmail, 'EZProxy Host warning triggered erroneously', $message);
                 exit;
 
@@ -27,7 +27,7 @@ if ($_POST) {
                 }else{
 
                 default:
-                        $message = 'Someone tried to access this address which is not in the host list: '. $_POST['url'];
+                        $message = 'Someone tried to access this address which is not in the host list: '. htmlspecialchars($_POST['url']);
                         mail($emailAddresses, 'EZProxy Host needed', $message);
 
         }
