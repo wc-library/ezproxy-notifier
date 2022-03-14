@@ -3,24 +3,33 @@
 $adminEmail = 'admin@example.edu';
 $emailAddresses = 'eresources@example.edu,admin@example.edu';
 
+
 if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
     $protocol = 'https://';
 }else {
     $protocol = 'http://';
 }
 
-$thisServer = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+function ignoreMail(){
+                $message = "Someone went directly to this form: ". $_POST['url'];
+                mail($adminEmail, 'EZProxy Host warning triggered erroneously', $message);
+                exit;
 
+}
+
+$thisServer = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 if ($_POST) {
-        if($_POST['url']){
-                if($_POST['url'] == $thisServer){
-                        $message = "Someone went directly to this form: ". $_POST['url'];
-                        mail($adminEmail, 'EZProxy Host warning triggered erroneously', $message);
-                        exit;
+
+        switch ($_POST['url']){
+                case $thisServer:
+                        ignoreMail();
+                
                 }else{
+
+                default:
                         $message = 'Someone tried to access this address which is not in the host list: '. $_POST['url'];
                         mail($emailAddresses, 'EZProxy Host needed', $message);
-                }
+
         }
 }else{
 
