@@ -24,7 +24,6 @@ if ($_POST) {
                 case $thisServer:
                         ignoreMail();
                 
-                }else{
 
                 default:
                         $message = 'Someone tried to access this address which is not in the host list: '. htmlspecialchars($_POST['url']);

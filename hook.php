@@ -28,7 +28,7 @@ if ($_GET) {
                 default:
                         $message = 'Someone tried to access this address which is not in the host list: '. htmlspecialchars($_GET['url']);
                         mail($emailAddresses, 'EZProxy Host needed', $message);
-                        return http_response_code(200)
+                        return http_response_code(200);
 
         }
 }
