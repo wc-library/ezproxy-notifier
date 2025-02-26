@@ -1,5 +1,7 @@
 # ezproxy-notifier
 
+Archived since we no longer use EZProxy and are not maintaining this tool. 
+____
 ## Two variants
 There are two versions. One is an iframe embed version. This is discouraged because it requires you to use a less strict cross site scripting setting. The other is a webhook version. 
 
